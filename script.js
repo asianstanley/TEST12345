@@ -34,11 +34,6 @@ function closeMenu() {
   document.getElementById('menuOverlay').style.display = 'none';
 }
 
-function downloadCSV() {
-  // แทนที่ URL ด้านล่างด้วยลิงก์ไปยังไฟล์ CSV ใน Google Drive
-  var csvUrl = "https://drive.google.com/file/d/1abYoc4UFeS8LNKThebp9kI6xjNZVc7xM/view?usp=sharing";
-  window.location.href = csvUrl;
-}
 // Function to process CSV data
 function processData(csvData) {
   var lines = csvData.split('\n');
