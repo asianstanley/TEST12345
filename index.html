@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSV File Reader and Search</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Custom CSS for header */
+    .navbar-custom {
+      background-color: orange;
+      width: 100%;
+      padding: 10px 0;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    /* Custom CSS for form groups */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .table-striped tbody tr:nth-child(even) {
+      background-color: whitesmoke; /* สีพื้นหลังสำหรับแถวที่เลขคู่ */
+    }
+  
+    .table-striped tbody tr:nth-child(odd) {
+      background-color: lightcyan; /* สีพื้นหลังสำหรับแถวที่เลขคี่ */
+    }
+
+    .btn-purple {
+      color: #fff;
+      background-color: purple;
+      border-color: purple;
+    }
+    .btn-purple:hover {
+      background-color: darkpurple;
+      border-color: darkpurple;
+    }
+    .menu-popup {
+      display: block;
+      position: fixed;
+      top: 0;
+      right: -300px; /* Start off-screen */
+      width: 300px;
+      height: 100%;
+      background-color:#F7D07A;
+      box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+      z-index: 1000;
+      padding: 20px;
+      transition: right 0.3s ease; /* Slide-in transition */
+    }
+    .menu-popup a {
+      display: block;
+      margin: 15px 0;
+    }
+    .menu-popup .close-btn {
+      cursor: pointer;
+      font-size: 1.5em;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+    .menu-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+    .menu-popup a, .menu-popup .close-btn {
+      color: black; /* เปลี่ยนสีตัวหนังสือเป็นสีดำ */
+    }
+  
+  </style>
+</head>
+<body class="bg-light">
+  <nav class="navbar navbar-light navbar-custom">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1">SEARCH ENGINE</span>
+      <button class="navbar-toggler" type="button" onclick="toggleMenu()">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </nav>
+  
+  <div class="menu-popup" id="menuPopup">
+    <span class="close-btn" onclick="toggleMenu()">&times;</span>
+    <a href="#">Home</a>
+    <a href="#">Features</a>
+    <a href="#">Pricing</a>
+    <a href="#">About</a>
+  </div>
+  <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+  
+ 
+
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="csvFile">Download CSV FILE:</label>
+        <a href="https://drive.google.com/file/d/1abYoc4UFeS8LNKThebp9kI6xjNZVc7xM/view?usp=sharing" class="btn btn-primary">Download</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="csvFile">Upload CSV File:</label>
+        <input type="file" class="form-control-file" id="csvFile" accept=".csv">
+        <button class="btn btn-secondary mt-2" onclick="clearFileInput()">Clear</button>
+        <button class="btn btn-success mt-2" onclick="exportCSV()">EXPORT</button>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="searchInput">Search:</label>
+        <div class="input-group">
+          <input type="text" class="form-control" id="searchInput" placeholder="Enter DATA">
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="button" onclick="searchICSCode()">Search</button>
+            
+            <button class="btn btn-purple" type="button" onclick="inserttable()">Insert Table</button>
+          </div>
+        </div>
+      </div>
+            <button class="btn btn-secondary" type="button" onclick="clearSearchInput()">Clear</button>
+            <button class="btn btn-danger" onclick="clearAll()">Clear All</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="resultsList">ICS Code:</label>
+        <select multiple class="form-control" id="resultsList"></select>
+        <button class="btn btn-info mt-2" onclick="copySelectedOptions('resultsList')">Copy ICS Code</button>
+        
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="resultsList2">Part Name:</label>
+        <select multiple class="form-control" id="resultsList2"></select>
+        <button class="btn btn-info mt-2" onclick="copySelectedOptions('resultsList2')">Copy Part Name</button>
+        
+      </div>
+    </div>
+  </div>  
+
+  <!-- Add the Program Name section -->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="resultsTable">Program Name and Detail:</label>
+        <table class="table table-bordered table-striped" id="resultsTable">
+          <thead class="thead-dark">
+            <tr>
+              <th>Program Name</th>
+              <th>Feeder Type</th>
+              <th>Machine No.</th>
+              <th>Line No.</th>
+              <th>ICS Code</th>
+              <th>Part Name</th>
+              <th>No. Points</th>
+              <th>Position</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            <!-- ข้อมูลในตาราง -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  
+  
+    
+  
+</div>
+<!-- Bootstrap JS and your custom script.js -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="script.js"></script>
+
+<script>
+  function clearFileInput() {
+    document.getElementById('csvFile').value = '';
+  }
+
+  function clearSearchInput() {
+    document.getElementById('searchInput').value = '';
+  }
+
+  function clearResultsList() {
+    document.getElementById('resultsList').innerHTML = '';
+  }
+
+  function clearResultsList2() {
+    document.getElementById('resultsList2').innerHTML = '';
+  }
+  function clearResultsTable() {
+    document.getElementById('resultsTable').getElementsByTagName('tbody')[0].innerHTML = '';
+  }
+  
+  function clearAll() {
+    clearSearchInput();
+    clearResultsList();
+    clearResultsList2();
+    clearResultsTable();
+    
+    // Add any additional clear functions here if needed
+  }
+</script>
+
+</body>
+</html>
