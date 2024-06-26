@@ -9,7 +9,7 @@
   <style>
     /* Custom CSS for header */
     .navbar-custom {
-      background-color: orange;
+      background-color: #FF9A00;
       width: 100%;
       padding: 10px 0;
       margin-left: auto;
@@ -75,13 +75,24 @@
     .menu-popup a, .menu-popup .close-btn {
       color: black; /* เปลี่ยนสีตัวหนังสือเป็นสีดำ */
     }
+    .navbar-brand img {
+      width: 300px; /* Adjust the width as needed */
+      height: 50; /* Maintain aspect ratio */
+      margin-left: 570px; /* Optional: Add some margin */
+    }
+    
   
   </style>
 </head>
 <body class="bg-light">
   <nav class="navbar navbar-light navbar-custom">
     <div class="container-fluid">
-      <span class="navbar-brand mb-0 h1">SEARCH ENGINE</span>
+      <!-- Navbar brand with PNG image -->
+      <a class="navbar-brand" href="#">
+        <img src="C:\MATHALL\SEARCH ENGINE.gif" alt="Logo" class="d-inline-block align-top">
+        
+      </a>
+      <!-- Navbar toggler button -->
       <button class="navbar-toggler" type="button" onclick="toggleMenu()">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -98,20 +109,6 @@
   <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
   
  
-
-<div class="container mt-3">
-  <div class="row">
-    <div class="col-md-6">
-      <div class="form-group">
-        <label for="csvFile">Download CSV FILE:</label>
-        <a href="https://drive.google.com/file/d/1abYoc4UFeS8LNKThebp9kI6xjNZVc7xM/view?usp=sharing" class="btn btn-primary">Download</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
 <div class="container mt-3">
   <div class="row">
     <div class="col-md-6">
