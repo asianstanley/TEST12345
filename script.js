@@ -27,17 +27,6 @@ function toggleMenu() {
     menuOverlay.style.display = 'block';
   }
 }
-function toggleGIF() {
-    var img = document.getElementById('navbar-logo'); // เลือกภาพใน Navbar brand
-    var src = img.getAttribute('src'); // ดึง URL ของภาพ
-    var newSrc = 'https://github.com/asianstanley/TEST12345/blob/main/SEARCH%20ENGINE.gif?raw=true'; // URL ของ GIF
-    
-    if (src !== newSrc) {
-      img.setAttribute('src', newSrc); // เปลี่ยน URL เป็น URL ของ GIF
-    } else {
-      // ไม่ต้องมีส่วนนี้เนื่องจากเราไม่มีภาพ PNG ในกรณีนี้
-    }
-  }
 
 // Function to close the menu popup
 function closeMenu() {
@@ -295,3 +284,4 @@ function inserttable() {
     alert('Data inserted successfully.');
   }
   
+ 
