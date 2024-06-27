@@ -171,6 +171,7 @@ function searchICSCode() {
           var cell6 = row.insertCell(5);
           var cell7 = row.insertCell(6);
           var cell8 = row.insertCell(7);
+          var cell9 = row.insertCell(8);
           cell1.textContent = window.csvData[index]['Program Name'];
           cell2.textContent = window.csvData[index]['Feeder Type'];
           cell3.textContent = window.csvData[index]['Machine No.'];
@@ -178,7 +179,8 @@ function searchICSCode() {
           cell5.textContent = window.csvData[index]['ICS Code'];
           cell6.textContent = window.csvData[index]['Part Name'];
           cell7.textContent = window.csvData[index]['No. Points'];
-          cell8.textContent = window.csvData[index]['Position'];
+          cell8.textContent = window.csvData[index]['Date Modified'];
+          cell9.textContent = window.csvData[index]['Position'];
       });
 
   } else {
@@ -247,6 +249,7 @@ function inserttable() {
       var cell6 = newRow.insertCell(5);
       var cell7 = newRow.insertCell(6);
       var cell8 = newRow.insertCell(7);
+      var cell9 = newRow.insertCell(8);
 
       cell1.textContent = window.csvData[index]['Program Name'];
       cell2.textContent = window.csvData[index]['Feeder Type'];
@@ -255,7 +258,8 @@ function inserttable() {
       cell5.textContent = window.csvData[index]['ICS Code'];
       cell6.textContent = window.csvData[index]['Part Name'];
       cell7.textContent = window.csvData[index]['No. Points'];
-      cell8.textContent = window.csvData[index]['Position'];
+      cell8.textContent = window.csvData[index]['Date Modified'];
+      cell9.textContent = window.csvData[index]['Position'];
       
       var icsCode = window.csvData[index]['ICS Code'];
       if (!resultsList.querySelector('option[value="' + icsCode + '"]')) {
