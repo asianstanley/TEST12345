@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Features Page</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap">
+  <style>
+    body {
+        font-family: 'Kanit', sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .top-bar {
+        background-color: orange;
+        width: 100%;
+        padding: 10px;
+        text-align: center;
+        color: white;
+        font-size: 24px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        display: flex;
+        justify-content: space-between; /* จัดการให้เนื้อหาอยู่ทางซ้ายและลูกเล่นทางขวา */
+        align-items: center; /* จัดให้เนื้อหาอยู่กึ่งกลางแนวตั้ง */
+      }
+      
+      .top-bar .logo {
+        font-size: 32px;
+        font-weight: bold;
+        text-decoration: none;
+        color: white;
+      }
+      
+      .top-bar .social-icons {
+        display: flex;
+        gap: 10px;
+      }
+      
+      .top-bar .social-icons a {
+        color: white;
+        font-size: 20px;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+      
+      .top-bar .social-icons a:hover {
+        color: #f0f0f0;
+      }
+      
+      section {
+        padding: 70px 50px 50px 50px; /* เพิ่ม padding ด้านบนเพื่อหลีกเลี่ยงการทับซ้อนกับแทบสีส้ม */
+        border: 1px solid #ddd;
+        margin: 20px 0;
+      }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <div class="logo">Features Page</div>
+    <div class="social-icons">
+      <a href="#"><i class="fa fa-facebook"></i></a>
+      <a href="#"><i class="fa fa-twitter"></i></a>
+      <a href="#"><i class="fa fa-instagram"></i></a>
+    </div>
+  </div>
+  
+  <section id="features">
+    <h1>Features</h1>
+    <p>เนื้อหาหน้า Features</p>
+  </section>
+
+</body>
+</html>
