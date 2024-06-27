@@ -46,14 +46,16 @@
       width: 300px;
       height: 100%;
       background-color:#F7D07A;
-      box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+      box-shadow: -2px 0 5px rgba(255, 242, 94, 0.5);
       z-index: 1000;
       padding: 20px;
       transition: right 0.3s ease; /* Slide-in transition */
+      
     }
     .menu-popup a {
       display: block;
       margin: 15px 0;
+      
     }
     .menu-popup .close-btn {
       cursor: pointer;
@@ -61,6 +63,7 @@
       position: absolute;
       top: 10px;
       right: 10px;
+
     }
     .menu-overlay {
       display: none;
@@ -71,9 +74,11 @@
       height: 100%;
       background: rgba(0, 0, 0, 0.5);
       z-index: 999;
+      
     }
     .menu-popup a, .menu-popup .close-btn {
       color: black; /* เปลี่ยนสีตัวหนังสือเป็นสีดำ */
+      
     }
     .navbar-brand img {
       width: 300px; /* Adjust the width as needed */
@@ -81,7 +86,22 @@
       margin-left: auto; /* Optional: Add some margin */
       margin-right: auto;
     }
-    
+    /* CSS เพิ่มสีให้กับ hamburger icon */
+    .navbar-toggler-icon {
+      background-color: #f2f2f1; /* สีพื้นหลังโปร่งใส */
+      border: 1px solid transparent; /* ขอบโปร่งใส */
+      outline: none; /* ไม่มีเส้นขอบ */
+    }
+    /* CSS สำหรับเมื่อกดแล้วให้มีขอบ */
+    .navbar-toggler:focus .navbar-toggler-icon {
+      border-color: #f2f2f1; /* สีขอบเมื่อถูกกด */
+    }
+    .navbar-toggler {
+      border: none; /* ไม่มีขอบ */
+      outline: #f2f2f1; /* ไม่มีเส้นขอบ */
+      background-color: #f2f2f1; /* สีพื้นหลังโปร่งใส */
+    }
+
   
   </style>
 </head>
@@ -102,8 +122,8 @@
   
   <div class="menu-popup" id="menuPopup">
     <span class="close-btn" onclick="toggleMenu()">&times;</span>
-    <a href="#">Home</a>
-    <a href="#">Features</a>
+    <a href="index.html">Home</a>
+    <a href="Features.html">Features</a>
     <a href="#">Pricing</a>
     <a href="#">About</a>
   </div>
@@ -118,6 +138,9 @@
         <input type="file" class="form-control-file" id="csvFile" accept=".csv">
         <button class="btn btn-secondary mt-2" onclick="clearFileInput()">Clear</button>
         <button class="btn btn-success mt-2" onclick="exportCSV()">EXPORT</button>
+        
+        
+        
       </div>
     </div>
     <div class="col-md-6">
