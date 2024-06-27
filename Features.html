@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Features Page</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap">
   <style>
     body {
@@ -56,7 +56,25 @@
         padding: 70px 50px 50px 50px; /* เพิ่ม padding ด้านบนเพื่อหลีกเลี่ยงการทับซ้อนกับแทบสีส้ม */
         border: 1px solid #ddd;
         margin: 20px 0;
+        text-align: center; /* จัดเนื้อหาตรงกลาง */
       }
+      
+      /* สไตล์เพิ่มเติมสำหรับรูปภาพ */
+      #start-image {
+        margin: auto;
+        max-width: 100%;
+        height: auto;
+        margin-top: 20px; /* ระยะห่างด้านบนของรูปภาพ */
+      }
+      h1 {
+        font-family: 'Kanit', sans-serif;
+        font-size: 48px;
+        margin-top: 0; /* ยกเลิกการเพิ่ม margin ของ <h1> เพื่อให้ชิดด้านบนของเนื้อหา */
+      }
+      p {
+        font-size: 22px;
+      }
+
   </style>
 </head>
 <body>
@@ -70,8 +88,11 @@
   </div>
   
   <section id="features">
-    <h1>Features</h1>
-    <p>เนื้อหาหน้า Features</p>
+    <h1> The Manual</h1>
+    <p>คู่มือการใช้งาน Features</p>
+    <p>เริ่มด้วย 
+    <img id="start-image" src="https://github.com/asianstanley/TEST12345/blob/main/1.png?raw=true" alt="เริ่มด้วย"> </p>
+    <img id="start-image" src="https://github.com/asianstanley/TEST12345/blob/main/2.png?raw=true" alt="เริ่มด้วย"> </p>
   </section>
 
 </body>
